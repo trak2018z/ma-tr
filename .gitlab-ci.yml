@@ -10,8 +10,7 @@ build:
       - target/*.jar
       - Dockerfile
 deploy:
- tags:
+  tags:
   - sc137394
   script:
   - docker-compose up -d
-
