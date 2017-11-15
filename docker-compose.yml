@@ -13,6 +13,6 @@ services:
     container_name: ma
     restart: unless-stopped
     ports:
-      - 8080:8080
+      - 80:80
     depends_on:
       - mongodb
