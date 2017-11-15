@@ -19,4 +19,4 @@ deploy:
   tags:
   - sc137394
   script:
-  - docker-compose up -d
+  - docker-compose up -d --no-cache
