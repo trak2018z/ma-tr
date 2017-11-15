@@ -2,4 +2,4 @@ build:
   tags:
   - sc137394
   script:
-  - mvnw clean install -P prod
+  - ./mvnw clean install -P prod
