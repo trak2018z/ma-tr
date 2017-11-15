@@ -9,7 +9,7 @@ class DashboardHandlerTest {
     val dashboardHandler: DashboardHandler = DashboardHandler(UserAccessorTestImpl())
 
     @Test(expected = OtherUserDataAccessException::class)
-    fun `throw exception if other user want to change dashboard`() {
+    fun `expect OtherUserDataAccessException when other user want to change dashboard`() {
         val dashboard = Dashboard()
         dashboard.username = "other"
         dashboardHandler.handleActions(dashboard)
