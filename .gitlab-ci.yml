@@ -4,3 +4,8 @@ build:
   script:
   - chmod +x mvnw
   - ./mvnw clean install -P prod
+  artifacts:
+    expire_in: 24h
+    paths:
+      - target/*.jar
+      - Dockerfile
