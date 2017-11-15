@@ -4,6 +4,8 @@ services:
     image: mongo
     container_name: mongo
     restart: unless-stopped
+    volumes:
+    - /home/gitlab-runner/mongodata:/data/db
 
   ma:
     build:
