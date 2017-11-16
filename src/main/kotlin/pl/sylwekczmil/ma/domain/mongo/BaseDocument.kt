@@ -10,20 +10,19 @@ import java.time.LocalDateTime
 
 open class BaseDocument {
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Id
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     val id: String? = null
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Version
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     var version: Long? = null
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @CreatedDate
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     var createdDate: LocalDateTime? = null
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @LastModifiedDate
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     var lastModifiedDate: LocalDateTime? = null
 }
-

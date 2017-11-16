@@ -9,10 +9,10 @@ import javax.persistence.Entity
 class User(
         @NotNull
         @Length(min = 5, max = 50)
-        val username: String = ""
+        val username: String
 ) : BaseEntity() {
 
     var firstname = ""
     var lastname = ""
-    
+
 }

@@ -12,21 +12,21 @@ import javax.persistence.MappedSuperclass
 @MappedSuperclass
 open class BaseEntity {
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Id
     @GeneratedValue
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     val id: Long? = null
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Version
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     var version: Long? = null
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @CreatedDate
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     var createdDate: LocalDateTime? = null
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @LastModifiedDate
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     var lastModifiedDate: LocalDateTime? = null
 
 }
