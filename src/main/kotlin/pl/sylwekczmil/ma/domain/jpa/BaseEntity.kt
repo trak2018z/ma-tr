@@ -28,5 +28,4 @@ open class BaseEntity {
     @LastModifiedDate
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     var lastModifiedDate: LocalDateTime? = null
-
 }
