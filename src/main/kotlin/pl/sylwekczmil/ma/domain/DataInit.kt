@@ -23,6 +23,7 @@ class DataInit {
 
         dashboardRepository.deleteAll()
         var d = Dashboard()
+        d.name = "My dash"
         d.greetingMessage = "Hello" + user.username
         d.username = user.username
         d.tasks = listOf(Task("task1", "task1 desc"))
