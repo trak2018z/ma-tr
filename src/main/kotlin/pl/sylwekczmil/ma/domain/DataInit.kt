@@ -31,5 +31,6 @@ class DataInit {
         //firstName: String, lastName: String, phoneNumber: String, description: String, username: String?)
         d.contacts = listOf(Contact("Jan", "Kowalski", "123-123-123", "Friend",
                 Address("Rzeszow", "Wincentego Pola", "1")))
+        dashboardRepository.save(d)
     }
 }
