@@ -12,7 +12,7 @@ open class BaseDocument {
 
     @Id
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    val id: String? = null
+    var id: String? = null
 
     @Version
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
