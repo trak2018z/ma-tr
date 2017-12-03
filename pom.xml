@@ -6,7 +6,9 @@
     <groupId>pl.sylwekczmil</groupId>
     <artifactId>ma</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <packaging>pom</packaging>
+
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -16,8 +18,8 @@
     </parent>
 
     <modules>
-        <module>backend</module>
-        <module>frontend</module>
+        <module>ma-backend</module>
+        <module>ma-frontend</module>
         <module>jwt</module>
     </modules>
 </project>

@@ -31,10 +31,13 @@ import java.util.List;
 @ComponentScan("pl.sylwekczmil.jwt")
 public class JwtSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
 
-    Logger logger = LoggerFactory.getLogger(JwtSecurityAutoConfiguration.class);
+    private static final Logger logger = LoggerFactory.getLogger(JwtSecurityAutoConfiguration.class);
 
 
+    @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
     private JwtProperties jwtProperties;
 
     @Autowired
@@ -43,15 +46,7 @@ public class JwtSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public JwtSecurityAutoConfiguration(UserDetailsService userDetailsService, JwtProperties jwtProperties) {
-
-        if (jwtProperties.getSecret() == null) {
-            throw new IllegalStateException("jwt.secret property is empty!");
-        }
-        this.userDetailsService = userDetailsService;
-        this.jwtProperties = jwtProperties;
-        logger.info("Loaded: " + jwtProperties.toString());
+    public JwtSecurityAutoConfiguration() {
     }
 
     @Autowired
