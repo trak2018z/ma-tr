@@ -12,8 +12,8 @@ build:
   artifacts:
     expire_in: 24h
     paths:
-      - target/*.jar
-      - Dockerfile
+      - backend/target/*.jar
+
 deploy:
   stage: deploy
   tags:
