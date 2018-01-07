@@ -1,9 +1,11 @@
 package pl.sylwekczmil.ma.backend.infrastructure.security
 
 import org.springframework.context.annotation.Profile
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
-import pl.sylwekczmil.ma.backend.domain.jpa.user.User
-import pl.sylwekczmil.ma.backend.domain.jpa.user.UserRepository
+import pl.sylwekczmil.ma.backend.domain.user.User
+import pl.sylwekczmil.ma.backend.domain.user.UserRepository
+
 
 interface UserAccessor {
     fun getUser(): User
@@ -13,8 +15,8 @@ interface UserAccessor {
 @Profile("dev", "prod")
 class UserAccessorImpl(val userRepository: UserRepository) : UserAccessor {
     override fun getUser(): User {
-        // TODO: find user by security context
-        return userRepository.getOne(1)
+        val authentication = SecurityContextHolder.getContext().authentication
+        return userRepository.findByUsername(authentication.name)
     }
 }
 
@@ -22,6 +24,6 @@ class UserAccessorImpl(val userRepository: UserRepository) : UserAccessor {
 @Profile("test")
 class UserAccessorTestImpl : UserAccessor {
     override fun getUser(): User {
-        return User("test")
+        return User("test", "\$2y\$10\$nVcdOrNjk59vGycfvafwU.9dGNmCGE1ftEmbJeh3Wghju/P6ddw12")
     }
 }

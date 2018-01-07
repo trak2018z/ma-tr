@@ -1,8 +1,8 @@
 package pl.sylwekczmil.ma.domain.mongo.dashboard
 
 import org.junit.Test
-import pl.sylwekczmil.ma.backend.domain.mongo.dashboard.Dashboard
-import pl.sylwekczmil.ma.backend.domain.mongo.dashboard.DashboardHandler
+import pl.sylwekczmil.ma.backend.domain.dashboard.Dashboard
+import pl.sylwekczmil.ma.backend.domain.dashboard.DashboardHandler
 import pl.sylwekczmil.ma.backend.infrastructure.security.UserAccessorTestImpl
 import pl.sylwekczmil.ma.backend.shared.OtherUserDataAccessException
 

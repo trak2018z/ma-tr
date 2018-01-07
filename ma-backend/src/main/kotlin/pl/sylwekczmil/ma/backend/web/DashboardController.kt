@@ -3,8 +3,8 @@ package pl.sylwekczmil.ma.backend.web
 import org.springframework.data.rest.webmvc.BasePathAwareController
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
-import pl.sylwekczmil.ma.backend.domain.mongo.dashboard.file.FileMetadata
-import pl.sylwekczmil.ma.backend.domain.mongo.dashboard.file.FileService
+import pl.sylwekczmil.ma.backend.domain.dashboard.file.FileMetadata
+import pl.sylwekczmil.ma.backend.domain.dashboard.file.FileService
 import javax.servlet.http.HttpServletResponse
 
 @RestController

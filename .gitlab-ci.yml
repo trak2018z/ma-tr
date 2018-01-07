@@ -12,7 +12,7 @@ build:
   artifacts:
     expire_in: 24h
     paths:
-      - backend/target/*.jar
+      - ma-backend/target/*.jar
 
 deploy:
   stage: deploy
