@@ -8,7 +8,7 @@ import pl.sylwekczmil.ma.backend.domain.dashboard.file.FileMetadata
 import pl.sylwekczmil.ma.backend.domain.dashboard.note.Note
 
 @Document
-class Dashboard : BaseDocument() {
+class Dashboard() : BaseDocument() {
 
     var name = ""
     var greetingMessage = ""
@@ -18,4 +18,8 @@ class Dashboard : BaseDocument() {
 
     @JsonIgnore
     var username: String? = null
+
+    constructor(username: String?) : this() {
+        this.username = username
+    }
 }

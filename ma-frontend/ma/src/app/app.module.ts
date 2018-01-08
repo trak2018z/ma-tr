@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 
 import {AppComponent} from './app.component';
-import {AuthService} from './common/auth.service';
+import {AuthGuard, AuthService} from './common/auth.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./infrastructure/auth.interceptor";
 import {AppRoutingModule} from './app-routing.module';
@@ -15,9 +15,13 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatGridListModule,
+  MatIconModule,
   MatInputModule,
+  MatSnackBarModule,
   MatToolbarModule
 } from "@angular/material";
+import {FormsModule} from "@angular/forms";
+import {DashboardService} from "./dashboard/dashboard.service";
 
 @NgModule({
   declarations: [
@@ -33,11 +37,14 @@ import {
     MatButtonModule,
     MatToolbarModule,
     MatInputModule,
+    MatIconModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule
   ],
-  providers: [AuthService, {
+  providers: [AuthService, AuthGuard, DashboardService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient.get("https://jsonplaceholder.typicode.com/users").subscribe(
       success => {
-        console.log("Successfully Completed");
         console.log(success);
       }
     );

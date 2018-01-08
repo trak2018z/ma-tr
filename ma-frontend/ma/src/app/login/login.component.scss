@@ -1,5 +1,5 @@
 .login {
-  height: 80vh;
+  margin-top: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,5 +8,12 @@
     width: 200px;
     margin: 10px auto;
     text-align: center;
+
+    i {
+      width: 190px;
+      font-size: 200px;
+    }
+
   }
+
 }
