@@ -3,14 +3,11 @@ stages:
   - deploy
 
 build:
+  image: maven:3-jdk-8
   stage: build
-  tags:
-  - sc137394
   script:
-  - chmod +x mvnw
-  - ./mvnw clean install -P prod
+  - mvn clean install -P prod
   artifacts:
-    expire_in: 24h
     paths:
       - ma-backend/target/*.jar
 
