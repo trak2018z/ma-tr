@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
   dashboard: Dashboard
 
-  constructor(private authService: AuthService, private dashboardService: DashboardService) {
+  constructor(public authService: AuthService, private dashboardService: DashboardService) {
 
   }
 

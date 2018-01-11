@@ -4,9 +4,11 @@
 /dist
 /tmp
 /out-tsc
+package-lock.json
 
 # dependencies
 /node_modules
+/node
 
 # IDEs and editors
 /.idea
