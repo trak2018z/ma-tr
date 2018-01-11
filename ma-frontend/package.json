@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build --prod && npm run clear",
-    "clear": "rimraf ../ma-backend/src/main/resources/static && mkdirp ../ma-backend/src/main/resources/static && npm run copy",
+    "build": "ng build --prod",
+    "clear": "rimraf ../ma-backend/src/main/resources/static && mkdirp ../ma-backend/src/main/resources/static",
     "copy": "copyfiles -f dist/** ../ma-backend/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
