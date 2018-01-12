@@ -1,3 +1,41 @@
-<p>
-  Hello {{authService.username}}!
-</p>
+<div class="dashboard">
+  <mat-toolbar class="nav"><p class="dashboard-name">{{dashboard.name}}</p> {{dashboard.greetingMessage}}</mat-toolbar>
+  <mat-tab-group #tabGroup (selectedIndexChange)="onTabChange()">
+    <mat-tab label="Notatki">
+      <mat-list>
+        <mat-list-item *ngFor="let note of dashboard.notes">
+          <mat-icon mat-list-icon>note</mat-icon>
+          <h4 mat-line>{{note.title}}</h4>
+          <p mat-line> {{note.description}} </p>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+    <mat-tab label="Kontakty">
+      <mat-list>
+        <mat-list-item *ngFor="let contact of dashboard.contacts">
+          <mat-icon mat-list-icon>person_outline</mat-icon>
+          <h4 mat-line>{{contact.firstName}} {{contact.lastName}}</h4>
+          <p mat-line> {{contact.phoneNumber}} {{contact.description}} </p>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+    <mat-tab label="Pliki">
+      <mat-list>
+        <mat-list-item *ngFor="let file of dashboard.files">
+          <mat-icon mat-list-icon>insert_drive_file</mat-icon>
+          <h4 mat-line>{{file.name}}</h4>
+          <p mat-line> {{file.lastModifiedDate | date}} </p>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+  </mat-tab-group>
+  <button *ngIf="tabIndex===0" mat-fab class="add-btn" color="primary" (click)="showNoteDialog()">
+    <mat-icon>note_add</mat-icon>
+  </button>
+  <button *ngIf="tabIndex===1" mat-fab class="add-btn" color="primary">
+    <mat-icon>group_add</mat-icon>
+  </button>
+  <button *ngIf="tabIndex===2" mat-fab class="add-btn" color="primary">
+    <mat-icon>file_upload</mat-icon>
+  </button>
+</div>

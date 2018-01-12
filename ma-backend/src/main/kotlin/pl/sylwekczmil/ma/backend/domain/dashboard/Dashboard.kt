@@ -10,7 +10,7 @@ import pl.sylwekczmil.ma.backend.domain.dashboard.note.Note
 @Document
 class Dashboard() : BaseDocument() {
 
-    var name = ""
+    var name = "New dashboard"
     var greetingMessage = ""
     var notes = mutableListOf<Note>()
     var contacts = mutableListOf<Contact>()

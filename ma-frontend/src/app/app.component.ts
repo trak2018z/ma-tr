@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -6,19 +6,12 @@ import {HttpClient} from "@angular/common/http";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'app';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  ngOnInit(): void {
-    this.httpClient.get("https://jsonplaceholder.typicode.com/users").subscribe(
-      success => {
-        console.log(success);
-      }
-    );
-  }
 }
 

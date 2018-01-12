@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from "../common/auth.service";
-import {Dashboard, DashboardService} from "./dashboard.service";
+import {Dashboard, DashboardService, Note} from "./dashboard.service";
+import {MatDialog, MatTabGroup} from "@angular/material";
+import {NoteDialogComponent} from "./dialogs/note-dialog/note-dialog.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +11,14 @@ import {Dashboard, DashboardService} from "./dashboard.service";
 })
 export class DashboardComponent implements OnInit {
 
-  dashboard: Dashboard
 
-  constructor(public authService: AuthService, private dashboardService: DashboardService) {
+  @ViewChild("tabGroup") tabGroup: MatTabGroup;
+  tabIndex: number = 0;
+  dashboard: Dashboard = <any>{};
+
+  constructor(public authService: AuthService,
+              private dashboardService: DashboardService,
+              public dialog: MatDialog) {
 
   }
 
@@ -19,6 +26,17 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getDashboard().subscribe(d => {
       this.dashboard = d;
     })
+  }
+
+
+  onTabChange() {
+    this.tabIndex = this.tabGroup.selectedIndex;
+  }
+
+  showNoteDialog(note?: Note) {
+    let dialogRef = this.dialog.open(NoteDialogComponent, {
+      data: {note}
+    });
   }
 
 }

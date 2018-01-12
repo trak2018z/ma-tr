@@ -13,21 +13,27 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   MatButtonModule,
   MatCardModule,
+  MatDialogModule,
+  MatExpansionModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
   MatSnackBarModule,
+  MatTabsModule,
   MatToolbarModule
 } from "@angular/material";
 import {FormsModule} from "@angular/forms";
 import {DashboardService} from "./dashboard/dashboard.service";
+import {NoteDialogComponent} from './dashboard/dialogs/note-dialog/note-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    NoteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +46,15 @@ import {DashboardService} from "./dashboard/dashboard.service";
     MatIconModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    MatExpansionModule,
+    MatTabsModule,
+    MatListModule,
+    MatDialogModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule
   ],
+  entryComponents: [NoteDialogComponent],
   providers: [AuthService, AuthGuard, DashboardService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

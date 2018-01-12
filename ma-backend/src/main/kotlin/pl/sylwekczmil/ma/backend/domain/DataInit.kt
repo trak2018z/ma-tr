@@ -24,14 +24,13 @@ class DataInit {
         gridFsTemplate.delete(null)
         dashboardRepository.deleteAll()
         var d = Dashboard()
-        d.id = "a"
-        d.name = "My dash"
-        d.greetingMessage = "Hello ${user.username}"
+        d.name = "Mój dashboard"
+        d.greetingMessage = "Witaj ${user.username}!"
         d.username = user.username
-        d.notes = mutableListOf(Note("note1", "note1 desc"))
-        d.contacts = mutableListOf(Contact("Jan", "Kowalski", "123-123-123", "Friend",
+        d.notes = mutableListOf(Note("Zakupy", "kupić mleko, platki"))
+        d.contacts = mutableListOf(Contact("Jan", "Kowalski", "123-123-123", "Przyjaciel",
                 Address("Rzeszow", "Wincentego Pola", "1")))
-        d.username = "user"
+        d.username = "username"
         dashboardRepository.save(d)
     }
 }
