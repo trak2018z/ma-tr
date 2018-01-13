@@ -19,6 +19,9 @@ body, html {
 
 .pointer {
   cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
 }
 
 .save-icon {

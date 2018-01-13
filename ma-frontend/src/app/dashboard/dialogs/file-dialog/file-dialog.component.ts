@@ -13,6 +13,7 @@ export class FileDialogComponent {
   dashboardUrl: string;
   files: File[] = [];
   sending: boolean;
+  progress = 0;
 
   constructor(public dialogRef: MatDialogRef<FileDialogComponent>,
               private fileService: FileService,
@@ -30,9 +31,10 @@ export class FileDialogComponent {
     for (let i = 0; i < this.files.length; i++) {
       let file = this.files[i];
       this.fileService.upload(this.dashboardUrl, file, (progress) => {
-        console.log(progress)
+        this.progress = progress;
       }).then(fileMetadata => {
         console.log(fileMetadata);
+        this.dialogRef.close();
       });
     }
   }
