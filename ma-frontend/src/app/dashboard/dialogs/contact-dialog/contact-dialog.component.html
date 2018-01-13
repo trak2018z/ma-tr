@@ -1,0 +1,19 @@
+<div class="edit-dialog">
+  <mat-form-field>
+    <input matInput [(ngModel)]="contact.firstName" placeholder="Imię">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="contact.lastName" placeholder="Nazwisko">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="contact.phoneNumber" placeholder="Telefon">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="contact.description" placeholder="Opis">
+  </mat-form-field>
+  <div class="button-row">
+    <button mat-mini-fab color="primary">
+      <mat-icon (click)="save()">save</mat-icon>
+    </button>
+  </div>
+</div>

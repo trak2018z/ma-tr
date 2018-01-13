@@ -13,16 +13,6 @@ import javax.servlet.http.HttpServletResponse
 @BasePathAwareController
 class DashboardController(val fileService: FileService, val dashboardRepository: DashboardRepository) {
 
-
-    @GetMapping("/dashboards/findByUsername/{username}")
-    fun getDashboard(@PathVariable username: String): Dashboard {
-        var dashboard = dashboardRepository.findByUsername(username)
-        if (dashboard == null) {
-            dashboard = dashboardRepository.save(Dashboard(username))
-        }
-        return dashboard
-    }
-
     @GetMapping("/files/{fileId}")
     fun getFile(@PathVariable fileId: String, response: HttpServletResponse) {
         fileService.get(fileId, response)

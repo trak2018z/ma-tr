@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       this.authService.setToken(r.token);
       this.router.navigate(['/']);
     }, e => {
-      this.snackBar.open("Wrong username or password!", null, {
+      this.snackBar.open("Zły login lub hasło!", null, {
         duration: 3000,
       });
     })

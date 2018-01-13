@@ -1,5 +1,21 @@
 <div class="dashboard">
-  <mat-toolbar class="nav"><p class="dashboard-name">{{dashboard.name}}</p> {{dashboard.greetingMessage}}</mat-toolbar>
+  <mat-toolbar class="nav">
+    <p class="dashboard-name pointer" (click)="nameEdited = true">
+      <span *ngIf="!nameEdited">{{dashboard.name}}</span>
+      <mat-form-field *ngIf="nameEdited">
+        <input matInput [(ngModel)]="dashboard.name">
+      </mat-form-field>
+    </p>
+    <p class="pointer" (click)="greetingMessageEdited = true">
+      <span *ngIf="!greetingMessageEdited">{{dashboard.greetingMessage}}</span>
+      <mat-form-field *ngIf="greetingMessageEdited">
+        <input matInput [(ngModel)]="dashboard.greetingMessage">
+      </mat-form-field>
+    </p>
+    <p class="nav-actions">
+      <mat-icon class="save-icon" (click)="save()">save</mat-icon>
+    </p>
+  </mat-toolbar>
   <mat-tab-group #tabGroup (selectedIndexChange)="onTabChange()">
     <mat-tab label="Notatki">
       <mat-list>
@@ -7,6 +23,7 @@
           <mat-icon mat-list-icon>note</mat-icon>
           <h4 mat-line>{{note.title}}</h4>
           <p mat-line> {{note.description}} </p>
+          <span><mat-icon class="delete-icon" (click)="removeElement(dashboard.notes, note)">delete</mat-icon></span>
         </mat-list-item>
       </mat-list>
     </mat-tab>
@@ -16,15 +33,18 @@
           <mat-icon mat-list-icon>person_outline</mat-icon>
           <h4 mat-line>{{contact.firstName}} {{contact.lastName}}</h4>
           <p mat-line> {{contact.phoneNumber}} {{contact.description}} </p>
+          <span><mat-icon class="delete-icon"
+                          (click)="removeElement(dashboard.contacts, contact)">delete</mat-icon></span>
         </mat-list-item>
       </mat-list>
     </mat-tab>
     <mat-tab label="Pliki">
       <mat-list>
         <mat-list-item *ngFor="let file of dashboard.files">
-          <mat-icon mat-list-icon>insert_drive_file</mat-icon>
-          <h4 mat-line>{{file.name}}</h4>
-          <p mat-line> {{file.lastModifiedDate | date}} </p>
+          <mat-icon *ngIf="!file.thumbNail" mat-list-icon>insert_drive_file</mat-icon>
+          <img mat-list-icon *ngIf="file.thumbNail" [src]="sanitize(file)"/>
+          <h4 mat-line>{{file.fileName}} </h4>
+          <p mat-line> {{file.uploadDate.replace('T', ' ')}} </p>
         </mat-list-item>
       </mat-list>
     </mat-tab>
@@ -32,10 +52,10 @@
   <button *ngIf="tabIndex===0" mat-fab class="add-btn" color="primary" (click)="showNoteDialog()">
     <mat-icon>note_add</mat-icon>
   </button>
-  <button *ngIf="tabIndex===1" mat-fab class="add-btn" color="primary">
+  <button *ngIf="tabIndex===1" mat-fab class="add-btn" color="primary" (click)="showContactDialog()">
     <mat-icon>group_add</mat-icon>
   </button>
-  <button *ngIf="tabIndex===2" mat-fab class="add-btn" color="primary">
+  <button *ngIf="tabIndex===2" mat-fab class="add-btn" color="primary" (click)="showFileDialog()">
     <mat-icon>file_upload</mat-icon>
   </button>
 </div>

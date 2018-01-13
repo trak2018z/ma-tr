@@ -1,8 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body, html {
   height: 100%;
   width: 100%;
-  margin: 0px;
+  margin: 0;
+}
+
+.edit-dialog {
+  mat-form-field {
+    width: 100%;
+  }
+
+  .button-row {
+    margin-top: 10px;
+    text-align: right;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.save-icon {
+  @extend .pointer
+}
+
+.delete-icon {
+  @extend .pointer
 }

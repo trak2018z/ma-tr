@@ -24,34 +24,53 @@ export interface Contact {
 
 export interface File {
   id: string;
+  fileName: string;
+  contentType: string;
   type: string;
   thumbNail: string;
   uploadDate: Date;
 }
 
 export interface Dashboard {
-  id: string;
-  createdDate: Date;
-  lastModifiedDate: Date;
+  id?: string;
+  createdDate?: Date;
+  lastModifiedDate?: Date;
   name: string;
   greetingMessage: string;
   notes: Note[];
   contacts: Contact[];
   files: File[];
+  _links?: Links;
 }
+
+export interface Links {
+  self: SelfOrDashboard;
+  dashboard: SelfOrDashboard;
+}
+
+export interface SelfOrDashboard {
+  href: string;
+}
+
 
 @Injectable()
 export class DashboardService {
+
+  baseUrl = '/api/dashboards/';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) {
   }
 
   getDashboard() {
-    return this.httpClient.get<Dashboard>("/api/dashboards/findByUsername/" + this.authService.username);
+    return this.httpClient.get<Dashboard>(this.baseUrl + 'search/findByUsername?username=' + this.authService.username);
   }
 
   updateDashboard(dashboard: Dashboard) {
-    return this.httpClient.put<Dashboard>("/api/dashboards/" + dashboard.id, dashboard);
+    if (dashboard._links) {
+      return this.httpClient.put<Dashboard>(dashboard._links.self.href, dashboard);
+    } else {
+      return this.httpClient.post<Dashboard>(this.baseUrl, dashboard);
+    }
   }
 }
 

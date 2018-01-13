@@ -1,3 +1,15 @@
-<p>
-  note-dialog works!
-</p>
+<div class="edit-dialog">
+  <mat-form-field>
+    <input matInput [(ngModel)]="note.title" placeholder="Tytuł">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="note.description" placeholder="Opis"></textarea>
+  </mat-form-field>
+
+  <div class="button-row">
+    <button mat-mini-fab color="primary">
+      <mat-icon (click)="save()">save</mat-icon>
+    </button>
+  </div>
+</div>

@@ -7,9 +7,6 @@ class Contact() {
     var description = ""
     var address = Address()
 
-    // if user want to link other user to this contact
-    var username: String? = null
-
     constructor(firstName: String, lastName: String, phoneNumber: String, description: String, address: Address) : this() {
         this.firstName = firstName
         this.lastName = lastName

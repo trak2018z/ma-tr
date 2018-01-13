@@ -20,6 +20,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatProgressSpinnerModule,
   MatSnackBarModule,
   MatTabsModule,
   MatToolbarModule
@@ -27,13 +28,18 @@ import {
 import {FormsModule} from "@angular/forms";
 import {DashboardService} from "./dashboard/dashboard.service";
 import {NoteDialogComponent} from './dashboard/dialogs/note-dialog/note-dialog.component';
+import {ContactDialogComponent} from "./dashboard/dialogs/contact-dialog/contact-dialog.component";
+import {FileDialogComponent} from "./dashboard/dialogs/file-dialog/file-dialog.component";
+import {FileService} from "./dashboard/file.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    NoteDialogComponent
+    NoteDialogComponent,
+    ContactDialogComponent,
+    FileDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,12 +56,13 @@ import {NoteDialogComponent} from './dashboard/dialogs/note-dialog/note-dialog.c
     MatTabsModule,
     MatListModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule
   ],
-  entryComponents: [NoteDialogComponent],
-  providers: [AuthService, AuthGuard, DashboardService, {
+  entryComponents: [NoteDialogComponent, ContactDialogComponent, FileDialogComponent],
+  providers: [AuthService, AuthGuard, DashboardService, FileService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
