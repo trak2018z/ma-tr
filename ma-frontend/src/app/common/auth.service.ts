@@ -37,6 +37,11 @@ export class AuthService {
     return this.httpClient.post<AuthResponse>("/api/auth", {username: username, password: password});
   }
 
+  logout() {
+    window.localStorage.removeItem(JWT_LS_KEY);
+    this.router.navigate(["/login"]);
+  }
+
   parseUsernameFromToken() {
     let token = AuthService.getToken();
     if (token) {

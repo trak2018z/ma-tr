@@ -24,7 +24,8 @@ import {
   MatProgressSpinnerModule,
   MatSnackBarModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTooltipModule
 } from "@angular/material";
 import {FormsModule} from "@angular/forms";
 import {DashboardService} from "./dashboard/dashboard.service";
@@ -57,6 +58,7 @@ import {FileService} from "./dashboard/file.service";
     MatTabsModule,
     MatListModule,
     MatDialogModule,
+    MatTooltipModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
     HttpClientModule,

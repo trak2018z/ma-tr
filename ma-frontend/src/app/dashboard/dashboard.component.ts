@@ -86,6 +86,7 @@ export class DashboardComponent implements OnInit {
     const index = array.indexOf(element);
     if (index > -1) {
       array.splice(index, 1);
+      this.save();
     }
   }
 

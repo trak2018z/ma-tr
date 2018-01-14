@@ -19,18 +19,19 @@ class DataInit {
              gridFsTemplate: GridFsTemplate) = CommandLineRunner {
 
         userRepository.deleteAll()
-        val user = userRepository.save(User("username", "\$2a\$10\$7DlN9HrS.mNy3fOqizR.Tucw3ryh/IxbDKAbPoDaGbEsk1zLBP1JW"))
-
+        var user = User("sylwek", "\$2y\$10\$pdGFADm18BgyAKv2E2V4IO3qEpy6YeWffsvt0Nwfs/npJTsfVrWne")
+        user.firstname = "Sylwek"
+        user = userRepository.save(user)
         gridFsTemplate.delete(null)
         dashboardRepository.deleteAll()
         var d = Dashboard()
         d.name = "Mój dashboard"
-        d.greetingMessage = "Witaj ${user.username}!"
+        d.greetingMessage = "Witaj ${user.firstname}!"
         d.username = user.username
-        d.notes = mutableListOf(Note("Zakupy", "kupić mleko, platki"))
+        d.notes = mutableListOf(Note("Zakupy", "Kupić mleko i platki."))
         d.contacts = mutableListOf(Contact("Jan", "Kowalski", "123-123-123", "Przyjaciel",
                 Address("Rzeszow", "Wincentego Pola", "1")))
-        d.username = "username"
+        d.username = "sylwek"
         dashboardRepository.save(d)
     }
 }
