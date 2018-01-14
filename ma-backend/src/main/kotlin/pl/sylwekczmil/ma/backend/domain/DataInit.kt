@@ -19,7 +19,7 @@ class DataInit {
              gridFsTemplate: GridFsTemplate) = CommandLineRunner {
 
         userRepository.deleteAll()
-        var user = User("sylwek", "\$2y\$10\$pdGFADm18BgyAKv2E2V4IO3qEpy6YeWffsvt0Nwfs/npJTsfVrWne")
+        var user = User("sylwek", "\$2a\$04\$ImAuttSUjVokkVFZyS9ZG.v.U/vUhvV1n9jmy12cU2/CA4/Nifv5O")
         user.firstname = "Sylwek"
         user = userRepository.save(user)
         gridFsTemplate.delete(null)
