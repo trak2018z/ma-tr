@@ -43,9 +43,9 @@
         <mat-list-item *ngFor="let file of dashboard.files">
           <mat-icon *ngIf="!file.thumbNail" mat-list-icon>insert_drive_file</mat-icon>
           <img mat-list-icon *ngIf="file.thumbNail" [src]="sanitize(file)"/>
-          <p mat-line><span class="pointer">{{file.fileName}} </span></p>
+          <p mat-line><span class="pointer" (click)="download(file)">{{file.fileName}} </span></p>
           <p mat-line> {{file.uploadDate.replace('T', ' ')}} </p>
-          <span><mat-icon class="delete-icon">delete</mat-icon></span>
+          <span><mat-icon (click)="remove(file)" class="delete-icon">delete</mat-icon></span>
         </mat-list-item>
       </mat-list>
     </mat-tab>

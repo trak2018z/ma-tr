@@ -20,6 +20,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatProgressBarModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
   MatTabsModule,
@@ -57,6 +58,7 @@ import {FileService} from "./dashboard/file.service";
     MatListModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule

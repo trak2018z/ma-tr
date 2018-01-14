@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {FileService} from "../../file.service";
+import {FileMetadata, FileService} from "../../file.service";
 import {Dashboard} from "../../dashboard.service";
 
 @Component({
@@ -11,7 +11,7 @@ import {Dashboard} from "../../dashboard.service";
 export class FileDialogComponent {
 
   dashboardUrl: string;
-  files: File[] = [];
+  files: FileMetadata[] = [];
   sending: boolean;
   progress = 0;
 
@@ -29,12 +29,11 @@ export class FileDialogComponent {
   send() {
     this.sending = true;
     for (let i = 0; i < this.files.length; i++) {
-      let file = this.files[i];
+      let file = <any>this.files[i];
       this.fileService.upload(this.dashboardUrl, file, (progress) => {
         this.progress = progress;
       }).then(fileMetadata => {
-        console.log(fileMetadata);
-        this.dialogRef.close();
+        this.dialogRef.close(fileMetadata);
       });
     }
   }

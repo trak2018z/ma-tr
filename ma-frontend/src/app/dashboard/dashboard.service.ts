@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../common/auth.service";
+import {FileMetadata} from "./file.service";
 
 export interface Note {
   title: string;
@@ -22,15 +23,6 @@ export interface Contact {
   username?: any;
 }
 
-export interface File {
-  id: string;
-  fileName: string;
-  contentType: string;
-  type: string;
-  thumbNail: string;
-  uploadDate: Date;
-}
-
 export interface Dashboard {
   id?: string;
   createdDate?: Date;
@@ -39,7 +31,7 @@ export interface Dashboard {
   greetingMessage: string;
   notes: Note[];
   contacts: Contact[];
-  files: File[];
+  files: FileMetadata[];
   _links?: Links;
 }
 

@@ -33,11 +33,19 @@ class FileService(val gridFsTemplate: GridFsTemplate,
         return fileMetadata
     }
 
-    fun get(fileId: String, response: HttpServletResponse) {
-        val file = gridFsTemplate.findOne(Query.query(Criteria.where("metadata._id").`is`(fileId)))
+    fun get(fileUrl: String, fileName: String, response: HttpServletResponse) {
+        val file = gridFsTemplate.findOne(Query.query(Criteria.where("metadata.url").`is`(fileUrl)))
         file.writeTo(response.outputStream)
         response.contentType = file.contentType
-        response.setHeader("Content-Disposition", "attachment; filename=\"" + file.filename + "\"")
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"")
+    }
+
+
+    fun delete(dashboardId: String, fileUrl: String) {
+        gridFsTemplate.delete(Query.query(Criteria.where("metadata.url").`is`(fileUrl)))
+        val dashboard = dashboardRepository.findOne(dashboardId)
+        dashboard.files.removeAll(dashboard.files.filter { fileMetadata -> fileMetadata.url.equals(fileUrl) })
+        dashboardRepository.save(dashboard)
     }
 
     fun imgToBase64String(img: RenderedImage, formatName: String): String {
@@ -45,5 +53,6 @@ class FileService(val gridFsTemplate: GridFsTemplate,
         ImageIO.write(img, formatName, os)
         return Base64.getEncoder().encodeToString(os.toByteArray())
     }
+
 
 }
